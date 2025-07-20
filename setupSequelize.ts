@@ -1,7 +1,5 @@
 import sequelize from './src/db/sequelize'
 
-import Customer from './src/db/models/Customer'
-
 (async () => {
   try {
     await sequelize.sync({ force: false }); // force: true recria as tabelas
