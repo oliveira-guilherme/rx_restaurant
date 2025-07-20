@@ -33,7 +33,7 @@ router.post('/', customerValidator.customerCreateValidator, (req: Request, res: 
   return customerCtlr.create(req, res)
 })
 
-router.put('/:id', customerValidator.customerUpdateValidator, (req: Request, res: Response) => {
+router.patch('/:id', customerValidator.customerUpdateValidator, (req: Request, res: Response) => {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() })

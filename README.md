@@ -1,73 +1,60 @@
 # rx_restaurant
 
-## Overview
-`rx_restaurant` is a Node.js Express API project built with TypeScript and Sequelize ORM. This project serves as a RESTful API for managing restaurant data.
-
-## Features
-- TypeScript for type safety and better development experience.
-- Sequelize ORM for database interactions.
-- Express framework for building the API.
-- Jest for unit testing.
-
-## Directory Structure
-```
-rx_restaurant
-├── src
-│   ├── app.ts
-│   ├── routes
-│   │   └── index.ts
-│   ├── controllers
-│   │   └── index.ts
-│   ├── repositories
-│   │   └── index.ts
-│   ├── models
-│   │   └── index.ts
-│   ├── tests
-│   │   └── app.test.ts
-│   └── types
-│       └── index.ts
-├── package.json
-├── tsconfig.json
-├── jest.config.js
-├── docker-compose.yml
-└── README.md
-```
-
-## Setup Instructions
-
 ### Prerequisites
-- Node.js (version 14 or higher)
 - Docker and Docker Compose
 
-### Installation
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd rx_restaurant
-   ```
+## Setup Instructions
+1 - Copy file .env.example and rename to .env
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
+2 - Run command docker compose up -d in terminal
 
-### Running the Application
-To start the application, you can use Docker Compose:
-```
-docker-compose up
-```
+## Run unit test:
+docker exec -it <container_name> npm test
 
-### Running Tests
-To run the unit tests, use:
-```
-npm test
-```
+## Example of requests:
+type: POST
+url: http://localhost:3000/menu
+payload: {
+    "name": "Orange juice",
+    "price": "2.59",
+    "category": "drink",
+    "description": "No sugar"
+}
+description: Create an item in menu
 
-## Usage
-The API provides endpoints to manage restaurant data. You can use tools like Postman or curl to interact with the API.
+type: POST
+url: http://localhost:3005/customers
+payload: {
+    "name": "John Doe",
+    "phone": "551499999999",
+    "email": "john@gmail.com"
+}
+description: Create an item in menu
 
-## Contributing
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+type: GET
+url: http://localhost:3000/customers/orders/bcbda9d1-18e5-40e9-90a8-74148660f168?page=1&limit=5
+description: List the orders for a specific customer
 
-## License
-This project is licensed under the MIT License.
+type: POST
+url: http://localhost:3000/orders
+payload: {
+    "customerId": "6c3add3d-6254-47cc-836d-749cdcf1ed49",
+    "status": "pending",
+    "items": [{
+        "menu_item_id": "8f7ee1a2-d9ab-4847-ae01-22da20e9ddd1",
+        "quantity": 2
+    }]
+}
+description: Create an order with a list os dishes
+
+type: PATCH
+url: http://localhost:3000/orders/modify/8f4909f7-6e26-4e50-8076-523e355fbdb6
+payload: {
+    "customerId": "6c3add3d-6254-47cc-836d-749cdcf1ed49",
+    "status": "pending",
+    "items": [{
+        "menu_item_id": "8f7ee1a2-d9ab-4847-ae01-22da20e9ddd1",
+        "quantity": 2
+    }]
+}
+description: Create an order with a list os dishes

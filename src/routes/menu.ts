@@ -28,7 +28,7 @@ router.post('/', menuValidator.menuCreateValidator, (req: Request, res: Response
   return menuCtlr.create(req, res)
 })
 
-router.put('/:id', menuValidator.menuUpdateValidator, (req: Request, res: Response) => {
+router.patch('/:id', menuValidator.menuUpdateValidator, (req: Request, res: Response) => {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() })

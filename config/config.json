@@ -3,24 +3,8 @@
     "username": "postgres",
     "password": "postgres",
     "database": "rx_restaurant",
-    "host": "127.0.0.1",
-    "port": 5435,
-    "dialect": "postgresql"
-  },
-  "test": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "rx_restaurant",
-    "host": "127.0.0.1",
-    "port": 5435,
-    "dialect": "postgresql"
-  },
-  "production": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "rx_restaurant",
-    "host": "127.0.0.1",
-    "port": 5435,
+    "host": "postgresql",
+    "port": 5432,
     "dialect": "postgresql"
   }
 }
